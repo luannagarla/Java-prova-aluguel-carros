@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <title>Sistema de Aluguel de Carros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/icon-car.png">
+
     <style>
+
         body {
-            background: linear-gradient(135deg, #007bff, #00c6ff);
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url('/images/homepage.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #fff;
         }
+
         .card {
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -26,18 +32,15 @@
 </head>
 <body>
 <div class="card p-5 text-center bg-light" style="width: 500px;">
-    <h2 class="mb-4 text-dark">🚗 Sistema de Aluguel de Carros</h2>
-    <p class="text-muted mb-4">Selecione uma das opções abaixo para começar</p>
+    <h2 class="mb-4 text-dark">Sistema de Aluguel de Carros</h2>
+    <p>Bem-vinda (a) ao melhor sistema de aluguel de carros do quarto semestre de CDIA - UEL</p>
 
     <div class="d-grid gap-3">
         <a href="/login" class="btn btn-primary btn-custom">Login Funcionário</a>
-        <a href="/clientes/index" class="btn btn-success btn-custom">Gerenciar Clientes</a>
-        <a href="/carros/index" class="btn btn-info btn-custom">Gerenciar Carros</a>
-        <a href="/vendas/index" class="btn btn-warning btn-custom">Gerenciar Vendas</a>
     </div>
 
     <hr class="my-4">
-    <small class="text-muted">Desenvolvido para Prova 1 - Spring Boot + Thymeleaf</small>
+    <small class="text-muted">Desenvolvido para Prova 1 - Java + Spring Boot + MySQL</small>
 </div>
 </body>
 </html>
