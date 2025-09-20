@@ -21,6 +21,7 @@
         <th>Telefone</th>
         <th>Matrícula</th>
         <th>Cargo</th>
+        <th>Situação</th>
         <th>Ações</th>
     </tr>
     </thead>
@@ -31,6 +32,10 @@
         <td th:text="${funcionario.telefone}"></td>
         <td th:text="${funcionario.matricula}"></td>
         <td th:text="${funcionario.cargo}"></td>
+        <td>
+            <span th:if="${!funcionario.excluido}" class="badge bg-success">Ativo</span>
+            <span th:if="${funcionario.excluido}" class="badge bg-danger">Excluído</span>
+        </td>
         <td>
             <a th:href="@{'/funcionarios/editar/form/' + ${funcionario.id}}" class="btn btn-sm btn-warning">Editar</a>
             <button class="btn btn-sm btn-danger"

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CarroRepository extends JpaRepository<Carro, Long> {
-    List<Carro> findByDisponivelTrue();
+    List<Carro> findByDisponivelTrueAndExcluidoFalse();
 }

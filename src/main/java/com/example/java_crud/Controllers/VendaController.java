@@ -41,7 +41,7 @@ public class VendaController {
     public String novaVenda(Model model) {
         model.addAttribute("venda", new Venda());
         model.addAttribute("clientes", clienteService.listarTodos());
-        model.addAttribute("funcionarios", funcionarioService.listarTodos());
+        model.addAttribute("funcionarios", funcionarioService.listarTodosAtivos());
         model.addAttribute("carros", carroService.listarDisponiveis());
         return "venda/form";
     }

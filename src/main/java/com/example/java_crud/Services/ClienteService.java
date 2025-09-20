@@ -29,6 +29,13 @@ public class ClienteService {
     }
 
     public void excluir(Long id) {
-        clienteRepository.deleteById(id);
+        clienteRepository.findById(id).ifPresent(func -> {
+            func.setExcluido(true);
+            clienteRepository.save(func);
+        });
+    }
+
+    public List<Cliente> listarTodosAtivos() {
+        return clienteRepository.findByExcluidoFalse();
     }
 }

@@ -21,6 +21,7 @@
         <th>Placa</th>
         <th>Ano</th>
         <th>Status</th>
+        <th>Ativo?</th>
         <th>Ações</th>
     </tr>
     </thead>
@@ -33,6 +34,10 @@
         <td>
             <span th:if="${carro.disponivel}" class="badge bg-success">Disponível</span>
             <span th:if="${!carro.disponivel}" class="badge bg-danger">Alugado</span>
+        </td>
+        <td>
+            <span th:if="${!carro.excluido}" class="badge bg-success">Ativo</span>
+            <span th:if="${carro.excluido}" class="badge bg-danger">Excluído</span>
         </td>
         <td>
             <a th:href="@{'/carros/editar/form/' + ${carro.id}}" class="btn btn-sm btn-warning">Editar</a>

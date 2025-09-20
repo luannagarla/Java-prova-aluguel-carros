@@ -24,12 +24,19 @@ public class FuncionarioService {
         return funcionarioRepository.findAll();
     }
 
+    public List<Funcionario> listarTodosAtivos() {
+        return funcionarioRepository.findByExcluidoFalse();
+    }
+
     public Optional<Funcionario> buscarPorId(Long id) {
         return funcionarioRepository.findById(id);
     }
 
     public void excluir(Long id) {
-        funcionarioRepository.deleteById(id);
+        funcionarioRepository.findById(id).ifPresent(func -> {
+            func.setExcluido(true);
+            funcionarioRepository.save(func);
+        });
     }
 
     public Optional<Funcionario> login(String matricula, String senha) {

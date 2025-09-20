@@ -20,7 +20,7 @@
         <th>CPF</th>
         <th>Email</th>
         <th>Telefone</th>
-        <th>Histórico</th>
+        <th>Situação</th>
         <th>Ações</th>
     </tr>
     </thead>
@@ -31,7 +31,8 @@
         <td th:text="${cliente.email}"></td>
         <td th:text="${cliente.telefone}"></td>
         <td>
-            <a th:href="@{'/vendas?cliente=' + ${cliente.id}}" class="btn btn-sm btn-info">Ver Histórico</a>
+            <span th:if="${!cliente.excluido}" class="badge bg-success">Ativo</span>
+            <span th:if="${cliente.excluido}" class="badge bg-danger">Excluído</span>
         </td>
         <td>
             <a th:href="@{'/clientes/editar/form/' + ${cliente.id}}" class="btn btn-sm btn-warning">Editar</a>

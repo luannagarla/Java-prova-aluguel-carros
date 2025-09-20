@@ -18,6 +18,9 @@ public class Funcionario extends Pessoa {
     @Column(nullable = false)
     private String cargo;
 
+    @Column(nullable = false)
+    private Boolean excluido = false;
+
     public String getMatricula() { return matricula; }
     public void setMatricula(String matricula) { this.matricula = matricula; }
 
@@ -29,4 +32,7 @@ public class Funcionario extends Pessoa {
 
     public String getCargo() { return cargo; }
     public void setCargo(String cargo) { this.cargo = cargo; }
+
+    public Boolean getExcluido() { return excluido; }
+    public void setExcluido(Boolean excluido) { this.excluido = excluido; }
 }

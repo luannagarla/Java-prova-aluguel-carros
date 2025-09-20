@@ -29,10 +29,14 @@ public class CarroService {
     }
 
     public void excluir(Long id) {
-        carroRepository.deleteById(id);
+        carroRepository.findById(id).ifPresent(func -> {
+            func.setExcluido(true);
+            carroRepository.save(func);
+        });
     }
 
     public List<Carro> listarDisponiveis() {
-        return carroRepository.findByDisponivelTrue();
+        return carroRepository.findByDisponivelTrueAndExcluidoFalse();
     }
+
 }
