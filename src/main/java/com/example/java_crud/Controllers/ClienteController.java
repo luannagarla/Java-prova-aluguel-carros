@@ -16,21 +16,16 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    @GetMapping("/cliente")
-    public String clientesIndex() {
-        return "cliente/index";
-    }
-
     @GetMapping
     public String listarClientes(Model model) {
         model.addAttribute("clientes", clienteService.listarTodos());
-        return "clientes/lista"; // Thymeleaf
+        return "cliente/index"; // vai alimentar a grid
     }
 
     @GetMapping("/novo")
     public String novoCliente(Model model) {
         model.addAttribute("cliente", new Cliente());
-        return "clientes/form";
+        return "cliente/form";
     }
 
     @PostMapping("/salvar")
@@ -44,7 +39,7 @@ public class ClienteController {
         var cliente = clienteService.buscarPorId(id)
                 .orElseThrow(() -> new IllegalArgumentException("Cliente inválido: " + id));
         model.addAttribute("cliente", cliente);
-        return "clientes/form";
+        return "cliente/form"; // abre o mesmo form, mas preenchido
     }
 
     @GetMapping("/excluir/{id}")
@@ -53,3 +48,4 @@ public class ClienteController {
         return "redirect:/clientes";
     }
 }
+
