@@ -16,6 +16,11 @@ public class CarroController {
         this.carroService = carroService;
     }
 
+    @GetMapping("/carro")
+    public String clientesIndex() {
+        return "carro/index";
+    }
+
     @GetMapping
     public String listarCarros(Model model) {
         model.addAttribute("carros", carroService.listarTodos());

@@ -7,7 +7,7 @@
 </head>
 <body class="container py-4">
 <h2>Registrar Nova Venda</h2>
-<form th:action="@{/vendas/salvar}" th:object="${venda}" method="post">
+<form th:action="@{/templates/venda/salvar}" th:object="${venda}" method="post">
     <div class="mb-3">
         <label class="form-label">Cliente</label>
         <select class="form-select" th:field="*{cliente}">

@@ -26,6 +26,11 @@ public class VendaController {
         this.carroService = carroService;
     }
 
+    @GetMapping("/venda")
+    public String clientesIndex() {
+        return "venda/index";
+    }
+
     @GetMapping
     public String listarVendas(Model model) {
         model.addAttribute("vendas", vendaService.listarTodas());
