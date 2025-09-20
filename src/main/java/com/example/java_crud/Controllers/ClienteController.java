@@ -1,4 +1,7 @@
 package com.example.java_crud.Controllers;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import com.example.java_crud.Models.Cliente;
 import com.example.java_crud.Services.ClienteService;
@@ -29,9 +32,14 @@ public class ClienteController {
     }
 
     @PostMapping("/salvar")
-    public String salvarCliente(@ModelAttribute Cliente cliente) {
-        clienteService.salvar(cliente);
-        return "redirect:/clientes";
+    public ResponseEntity<?> salvarCliente(@ModelAttribute Cliente cliente) {
+        try {
+            clienteService.salvar(cliente);
+            return ResponseEntity.ok("Cliente salvo com sucesso"); // 200
+        } catch (DataIntegrityViolationException ex) {
+            String mensagem = "CPF ou Email já existe no sistema!";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagem); // 400
+        }
     }
 
     @GetMapping("/editar/form/{id}")
@@ -43,10 +51,15 @@ public class ClienteController {
     }
 
     @PostMapping("/editar/{id}")
-    public String editarCliente(@PathVariable Long id, @ModelAttribute Cliente cliente) {
+    public ResponseEntity<?> editarCliente(@PathVariable Long id, @ModelAttribute Cliente cliente, Model model) {
         cliente.setId(id);
-        clienteService.salvar(cliente);
-        return "redirect:/clientes";
+        try {
+            clienteService.salvar(cliente);
+            return ResponseEntity.ok("Cliente salvo com sucesso");
+        } catch (DataIntegrityViolationException ex) {
+            String mensagem = "CPF ou Email já existe no sistema!";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagem); // 400
+        }
     }
 
     @GetMapping("/excluir/{id}")
