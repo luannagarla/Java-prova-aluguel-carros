@@ -23,10 +23,6 @@ public class VendaService {
     public Venda salvar(Venda venda) {
         Carro carro = venda.getCarro();
 
-        if (!carro.isDisponivel()) {
-            throw new RuntimeException("Carro já alugado!");
-        }
-
         carro.setDisponivel(false);
         carroRepository.save(carro);
 
