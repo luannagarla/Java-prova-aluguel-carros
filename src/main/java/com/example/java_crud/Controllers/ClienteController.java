@@ -34,12 +34,19 @@ public class ClienteController {
         return "redirect:/clientes";
     }
 
-    @GetMapping("/editar/{id}")
-    public String editarCliente(@PathVariable Long id, Model model) {
+    @GetMapping("/editar/form/{id}")
+    public String openEditarCliente(@PathVariable Long id, Model model) {
         var cliente = clienteService.buscarPorId(id)
                 .orElseThrow(() -> new IllegalArgumentException("Cliente inválido: " + id));
         model.addAttribute("cliente", cliente);
         return "cliente/form"; // abre o mesmo form, mas preenchido
+    }
+
+    @PostMapping("/editar/{id}")
+    public String editarCliente(@PathVariable Long id, @ModelAttribute Cliente cliente) {
+        cliente.setId(id);
+        clienteService.salvar(cliente);
+        return "redirect:/clientes";
     }
 
     @GetMapping("/excluir/{id}")

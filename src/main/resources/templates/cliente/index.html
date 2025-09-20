@@ -34,7 +34,7 @@
             <a th:href="@{'/vendas?cliente=' + ${cliente.id}}" class="btn btn-sm btn-info">Ver Histórico</a>
         </td>
         <td>
-            <a th:href="@{'/clientes/editar/' + ${cliente.id}}" class="btn btn-sm btn-warning">Editar</a>
+            <a th:href="@{'/clientes/editar/form/' + ${cliente.id}}" class="btn btn-sm btn-warning">Editar</a>
             <button class="btn btn-sm btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#confirmDeleteModal"
