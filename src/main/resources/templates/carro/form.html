@@ -41,6 +41,7 @@
     <form id="carroForm"
           th:action="${carro.id != null} ? @{'/carros/editar/' + ${carro.id}} : @{/carros/salvar}"
           th:object="${carro}" method="post">
+        <input type = "hidden" name="_method" value="put" />
 
         <div class="mb-3">
             <label for="marca">Marca</label>

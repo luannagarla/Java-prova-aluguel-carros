@@ -75,7 +75,7 @@ public class VendaController {
         return "venda/form"; // mesmo form, mas preenchido
     }
 
-    @PostMapping("/editar/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> editarVenda(@PathVariable Long id, @ModelAttribute Venda venda) {
         venda.setId(id);
         try {

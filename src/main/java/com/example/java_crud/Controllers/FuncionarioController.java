@@ -73,7 +73,7 @@ public class FuncionarioController {
         return "funcionario/form"; // abre o mesmo form preenchido
     }
 
-    @PostMapping("/funcionarios/editar/{id}")
+    @PutMapping("/funcionarios/editar/{id}")
     public ResponseEntity<?> editarFuncionario(@PathVariable Long id,
                                                @ModelAttribute Funcionario funcionario,
                                                Model model) {

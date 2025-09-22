@@ -50,7 +50,7 @@ public class CarroController {
         return "carro/form"; // abre o mesmo form, mas preenchido
     }
 
-    @PostMapping("/editar/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> editarCarro(@PathVariable Long id, @ModelAttribute Carro Carro, Model model) {
         Carro.setId(id);
         try {

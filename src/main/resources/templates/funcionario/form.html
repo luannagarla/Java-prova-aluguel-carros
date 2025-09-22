@@ -41,6 +41,8 @@
           th:object="${funcionario}"
           method="post">
 
+        <input type = "hidden" name="_method" value="put" />
+
         <input type="hidden" th:field="*{id}" />
         <div class="mb-3">
             <label>Nome</label>

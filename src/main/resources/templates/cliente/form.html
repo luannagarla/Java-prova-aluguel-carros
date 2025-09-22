@@ -48,7 +48,9 @@
           th:object="${cliente}"
           method="post">
 
-    <div class="mb-3">
+        <input type = "hidden" name="_method" value="put" />
+
+        <div class="mb-3">
             <label for="nome">Nome</label>
             <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Digite o nome" required>
         </div>

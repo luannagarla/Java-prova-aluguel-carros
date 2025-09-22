@@ -38,6 +38,8 @@
           th:object="${venda}"
           method="post">
 
+        <input type = "hidden" name="_method" value="put" />
+
         <div class="mb-3">
             <label>Cliente</label>
             <select th:field="*{cliente.id}" class="form-select" required>
