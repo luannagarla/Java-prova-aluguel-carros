@@ -28,8 +28,16 @@
     <tbody>
     <tr th:each="funcionario : ${funcionarios}">
         <td th:text="${funcionario.nome}"></td>
-        <td th:text="${funcionario.cpf}"></td>
-        <td th:text="${funcionario.telefone}"></td>
+        <td th:text="${#strings.substring(funcionario.cpf,0,3)} + '.'
+           + ${#strings.substring(funcionario.cpf,3,6)} + '.'
+           + ${#strings.substring(funcionario.cpf,6,9)} + '-'
+           + ${#strings.substring(funcionario.cpf,9,11)}">
+        </td>
+
+        <td th:text="'(' + ${#strings.substring(funcionario.telefone,0,2)} + ') '
+           + ${#strings.substring(funcionario.telefone,2,3)} + ' '
+           + ${#strings.substring(funcionario.telefone,3)}">
+        </td>
         <td th:text="${funcionario.matricula}"></td>
         <td th:text="${funcionario.cargo}"></td>
         <td>

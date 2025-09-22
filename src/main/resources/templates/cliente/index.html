@@ -27,9 +27,18 @@
     <tbody>
     <tr th:each="cliente : ${clientes}">
         <td th:text="${cliente.nome}"></td>
-        <td th:text="${cliente.cpf}"></td>
+        <td th:text="${#strings.substring(cliente.cpf,0,3)} + '.'
+           + ${#strings.substring(cliente.cpf,3,6)} + '.'
+           + ${#strings.substring(cliente.cpf,6,9)} + '-'
+           + ${#strings.substring(cliente.cpf,9,11)}">
+        </td>
+
         <td th:text="${cliente.email}"></td>
-        <td th:text="${cliente.telefone}"></td>
+        <td th:text="'(' + ${#strings.substring(cliente.telefone,0,2)} + ') '
+           + ${#strings.substring(cliente.telefone,2,3)} + ' '
+           + ${#strings.substring(cliente.telefone,3)}">
+        </td>
+
         <td>
             <span th:if="${!cliente.excluido}" class="badge bg-success">Ativo</span>
             <span th:if="${cliente.excluido}" class="badge bg-danger">Excluído</span>

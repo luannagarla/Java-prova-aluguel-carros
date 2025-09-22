@@ -19,7 +19,7 @@
     <tr>
         <th>Cliente</th>
         <th>Funcionário</th>
-        <th>Carro</th>
+        <th>Carro - Placa</th>
         <th>Período</th>
         <th>Valor Total</th>
         <th>Ações</th>
@@ -30,8 +30,8 @@
         <td th:text="${venda.cliente.nome}"></td>
         <td th:text="${venda.funcionario.nome}"></td>
         <td th:text="${venda.carro.marca} + ' ' + ${venda.carro.modelo} + ' - ' + ${venda.carro.placa}"></td>
-        <td th:text="${venda.dataInicio} + ' a ' + ${venda.dataFim}"></td>
-        <td th:text="${venda.valorTotal}"></td>
+        <td th:text="${#temporals.format(venda.dataInicio, 'dd/MM/yyyy')} + ' a ' + ${#temporals.format(venda.dataFim, 'dd/MM/yyyy')}"></td>
+        <td th:text="'R$ ' + ${venda.valorTotal}"></td>
         <td>
             <a th:href="@{'/vendas/editar/form/' + ${venda.id}}" class="btn btn-sm btn-warning">Editar</a>
             <button class="btn btn-sm btn-danger"
